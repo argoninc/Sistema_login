@@ -24,6 +24,10 @@ public class Principal extends JavaPlugin {
 		banco = new DB("argoninc/login.json");
 		config= new DB("argoninc/defaultSpawn.cfg");
 		
+		if(!config.has("xyz")) {
+			config.set("xyz", "world,-191,73,-92");
+		}
+		
 		//Registra listeners
 		getServer().getPluginManager().registerEvents(new ListenerJoin(), this);
 		getServer().getPluginManager().registerEvents(new ListenerChat(), this);

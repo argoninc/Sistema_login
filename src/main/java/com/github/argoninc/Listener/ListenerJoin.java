@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.json.JSONObject;
 
+import com.github.argoninc.main.LocationSpawn;
 import com.github.argoninc.main.Principal;
 import com.github.argoninc.main.Usuario;
 
@@ -23,6 +24,7 @@ public class ListenerJoin implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		String uuid = player.getUniqueId().toString();
+		String localSpawn = null;
 		
 		if(!Principal.banco.has(uuid)) {
 			JSONObject js = new JSONObject();
@@ -40,7 +42,11 @@ public class ListenerJoin implements Listener {
 		}
 		
 		// Colocar por config
-		player.teleport(new Location(Bukkit.getWorld("world"), -133, 83, -39));
+		
+		
+		localSpawn = (String) Principal.config.get("xyz");
+		
+		player.teleport(LocationSpawn.StringtoLocation(localSpawn));
 		player.getInventory().clear();
 
 		player.sendMessage(ChatColor.AQUA + "Seja Bem-vindo ao servidor!");
