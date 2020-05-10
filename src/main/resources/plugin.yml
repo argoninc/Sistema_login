@@ -1,0 +1,15 @@
+#Trocar para o nome que ficara em /plugins
+name: Sistema_login
+#Trocar para a classe que extends JavaPlugin
+main: com.github.argoninc.main.Principal
+version: 1.0.0
+api-version: 1.15
+commands:
+   login:
+      description: Your description
+      aliases: [logar]
+      usage: /<command>
+   register:
+      description: Your description
+      aliases: [registro, registrar]
+      usage: /<command>
