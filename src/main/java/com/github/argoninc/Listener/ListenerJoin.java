@@ -45,7 +45,7 @@ public class ListenerJoin implements Listener {
 
 		player.sendMessage(ChatColor.AQUA + "Seja Bem-vindo ao servidor!");
 		player.sendMessage(ChatColor.AQUA + "Realize o login com /login senha");
-		player.sendMessage(ChatColor.AQUA + "Ou utilize /registrar senha confirmar-senha");
+		player.sendMessage(ChatColor.AQUA + "Ou utilize /register senha confirmar-senha");
 
 	}
 

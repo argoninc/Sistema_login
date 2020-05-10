@@ -25,6 +25,7 @@ public class Comandos implements CommandExecutor {
 		}
 
 		Player player = (Player) sender;
+		String uuid = player.getUniqueId().toString();
 
 		// Só deixar fazer o comando se não estiver logado
 		if (cmd.equalsIgnoreCase("login")) {
@@ -32,8 +33,15 @@ public class Comandos implements CommandExecutor {
 				sender.sendMessage(ChatColor.RED + "Parece que você já está logado!");
 				return true;
 			}
+
+			if (((JSONObject) Principal.banco.get(uuid)).get("pass").equals("")) {
+				sender.sendMessage(ChatColor.RED + "Parece que você não tem registro!");
+				sender.sendMessage(ChatColor.RED + "Use /register senha confirmar-senha");
+				
+				return true;
+			}
 			if (args.length == 1) {
-				String uuid = player.getUniqueId().toString();
+
 				String passTyped = args[0];
 				Double hash = (Double) ((JSONObject) Principal.banco.get(uuid)).get("hash");
 				String md5Esperado = (String) ((JSONObject) Principal.banco.get(uuid)).get("pass");
@@ -60,10 +68,9 @@ public class Comandos implements CommandExecutor {
 				return true;
 			}
 			if (args.length == 2) {
-				
+
 				if (args[1].equals(args[0])) {
 
-					String uuid = player.getUniqueId().toString();
 					Double hash = null;
 
 					if (!((JSONObject) Principal.banco.get(uuid)).get("pass").equals("")) {

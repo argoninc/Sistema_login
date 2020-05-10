@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.argoninc.Listener.ListenerChat;
+import com.github.argoninc.Listener.ListenerDamage;
 import com.github.argoninc.Listener.ListenerJoin;
 import com.github.argoninc.commands.Comandos;
 import com.github.rillis.dao.DB;
@@ -26,6 +27,7 @@ public class Principal extends JavaPlugin {
 		//Registra listeners
 		getServer().getPluginManager().registerEvents(new ListenerJoin(), this);
 		getServer().getPluginManager().registerEvents(new ListenerChat(), this);
+		getServer().getPluginManager().registerEvents(new ListenerDamage(), this);
 		
 		//Registra comandos
 		this.getCommand("login").setExecutor(new Comandos());
