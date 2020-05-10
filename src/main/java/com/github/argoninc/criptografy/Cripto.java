@@ -1,5 +1,6 @@
 package com.github.argoninc.criptografy;
 
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -9,16 +10,18 @@ public class Cripto {
 		return Math.random();
 	}
 
-	public static byte[] getMD5(String texto) {
+	private static String getMD5(String texto) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
-			md.update(texto.getBytes());
-			return md.digest();
+		     byte[] messageDigest = md.digest(texto.getBytes());
+		     BigInteger number = new BigInteger(1, messageDigest);
+		     String hashtext = number.toString(16);
+			return hashtext;
 		} catch (NoSuchAlgorithmException e) {
 			return null;
 		}
 	}
-
+     
 	public static String getPassCript(String pass, Double hash) {
 
 		String hashText = hash.toString();

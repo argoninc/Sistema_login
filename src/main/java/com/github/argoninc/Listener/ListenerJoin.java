@@ -9,7 +9,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.json.JSONObject;
 
+import com.github.argoninc.main.Principal;
 import com.github.argoninc.main.Usuario;
 
 public class ListenerJoin implements Listener {
@@ -20,6 +22,17 @@ public class ListenerJoin implements Listener {
 
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
+		String uuid = player.getUniqueId().toString();
+		
+		if(!Principal.banco.has(uuid)) {
+			JSONObject js = new JSONObject();
+			
+			js.put("pass", "");
+			js.put("hash", "");
+			
+			Principal.banco.set(uuid, js);
+			
+			}
 
 		if(isLogged(player)) {
 			users.add(new Usuario(player, player.getLocation(), player.getInventory().getContents()));
