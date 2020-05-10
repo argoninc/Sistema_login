@@ -3,6 +3,7 @@ package com.github.argoninc.Listener;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -29,9 +30,9 @@ public class ListenerJoin implements Listener {
 		player.teleport(new Location(Bukkit.getWorld("world"), -133, 83, -39));
 		player.getInventory().clear();
 
-		player.sendMessage("Seja Bem-vindo ao servidor!");
-		player.sendMessage("Realize o login com /login senha");
-		player.sendMessage("Ou utilize /registrar senha confirmar-senha");
+		player.sendMessage(ChatColor.AQUA + "Seja Bem-vindo ao servidor!");
+		player.sendMessage(ChatColor.AQUA + "Realize o login com /login senha");
+		player.sendMessage(ChatColor.AQUA + "Ou utilize /registrar senha confirmar-senha");
 
 	}
 
